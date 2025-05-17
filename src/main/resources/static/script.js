@@ -20,3 +20,26 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Erro ao carregar a lista de alunos.');
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('http://localhost:8080/professores')
+    .then(response => response.json())
+    .then(data => {
+      const tbody = document.getElementById('professor-tbody');
+      data.forEach(professor => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+          <td>${professor.nomeProfessor}</td>
+          <td>${professor.emailProfessor}</td>
+          <td>${professor.telefoneProfessor}</td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(error => {
+      console.error('Erro ao buscar professores:', error);
+      alert('Erro ao carregar a lista de professores.');
+    });
+});

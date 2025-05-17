@@ -26,12 +26,12 @@ public class AlunoController {
         return alunoService.salvarAluno(aluno);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public void deletarAluno(@PathVariable Long id){
         alunoService.excluirAluno(id);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public Aluno atualizar(@PathVariable Long id, @RequestBody Aluno aluno){
         Aluno verificaAluno = alunoService.buscarAlunoId(id);
         if(verificaAluno == null) return null;
